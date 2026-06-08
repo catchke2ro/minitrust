@@ -1,0 +1,12 @@
+{% set flash_config = {
+    success: 'alert-success',
+    error: 'alert-danger',
+    info: 'alert-info',
+    warning: 'alert-warning'
+} %}
+{% set alertClass = flash_config[type]|default('alert-info') %}
+
+<div class="alert {{ alertClass }} alert-dismissible fade show d-flex justify-content-between align-items-center mb-3">
+    <span>{{ message }}</span>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

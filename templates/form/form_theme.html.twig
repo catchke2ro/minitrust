@@ -1,0 +1,78 @@
+{% use 'form_div_layout.html.twig' %}
+
+{# Row template #}
+{% block form_row %}
+    <div class="mb-3">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_help(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{# Validation error template #}
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <div class="mt-1">
+            {% for error in errors %}
+                <div class="invalid-feedback d-block">
+                    <span>{{ error.message }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# Text input template #}
+{% block form_widget_simple %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% if errors|length > 0 %}
+        {% set attr = attr|merge({'class': (attr.class|default('') ~ ' is-invalid')|trim}) %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{# Textarea template #}
+{% block textarea_widget %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% if errors|length > 0 %}
+        {% set attr = attr|merge({'class': (attr.class|default('') ~ ' is-invalid')|trim}) %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{# Select template #}
+{% block choice_widget_collapsed %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-select')|trim}) %}
+    {% if errors|length > 0 %}
+        {% set attr = attr|merge({'class': (attr.class|default('') ~ ' is-invalid')|trim}) %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{# Star rating widget #}
+{% block star_rating_widget %}
+    <div class="star-rating mt-1{{ errors|length > 0 ? ' has-error' : '' }}" id="{{ id }}">
+        {% for child in form|reverse %}
+            <input
+                type="radio"
+                id="{{ child.vars.id }}"
+                name="{{ child.vars.full_name }}"
+                value="{{ child.vars.value }}"
+                {% if child.vars.checked %}checked{% endif %}
+            />
+            <label for="{{ child.vars.id }}">★</label>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{# Label template #}
+{% block form_label %}
+    {% if label is not same as(false) %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' form-label fw-bold')|trim}) %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

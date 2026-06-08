@@ -1,0 +1,8 @@
+{% set flash_types = flash_types|default(['success', 'error']) %}
+
+{% for type in flash_types %}
+    {% for message in app.flashes(type) %}
+        {% include 'widget/flash_message.html.twig' with { type: type, message: message } only %}
+    {% endfor %}
+{% endfor %}
+
