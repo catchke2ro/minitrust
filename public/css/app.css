@@ -1,0 +1,37 @@
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.star-rating input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.star-rating label {
+    font-size: 2.5rem;
+    color: orange;
+    cursor: pointer;
+    transition: color 0.1s;
+    line-height: 1;
+    user-select: none;
+    opacity: 0.3;
+}
+
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    opacity: 1;
+}
+
+.star-rating-result {
+    color: gray;
+}
+.star-rating-result.active {
+    color: orange;
+}
