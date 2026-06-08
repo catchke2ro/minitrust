@@ -33,14 +33,14 @@ final class ReviewType extends AbstractType
             ])
             ->add('reviewText', TextareaType::class, [
                 'label' => 'form.review.review_text.label',
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'rows' => 5,
                 ],
             ])
             ->add('authorEmail', EmailType::class, [
                 'label' => 'form.review.author_email.label',
-                'required' => false,
+                'required' => true,
             ]);
     }
 
