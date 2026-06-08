@@ -19,4 +19,23 @@ class ReviewRepository extends ServiceEntityRepository implements ReviewReposito
     {
         parent::__construct($registry, Review::class);
     }
+
+    public function findReviewsByCompanyName(string $companyName, ?int $exceptId = null): array
+    {
+        // Create the company name without spaces and special characters for comparison
+        $companyName = preg_replace('/[^a-z0-9]/i', '', $companyName);
+
+        // Find reviews with the same company name, ignoring spaces and special characters
+        $qb = $this->createQueryBuilder('r')
+            ->where("REGEXP_REPLACE(r.companyName, '[^[:alnum:]]', '') = :companyName")
+            ->setParameter('companyName', $companyName)
+            ->orderBy('r.createdAt', 'DESC');
+
+        if (null !== $exceptId) {
+            // Exclude the review with the specified ID
+            $qb->andWhere('r.id != :id')->setParameter('id', $exceptId);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

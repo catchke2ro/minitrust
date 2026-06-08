@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Dto\ReviewDto;
+use App\Entity\Review;
 use App\Form\ReviewType;
 use App\Repository\ReviewRepositoryInterface;
 use App\Service\ReviewServiceInterface;
@@ -34,7 +35,7 @@ final class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name: 'review_create', methods: ['GET', 'POST'])]
+    #[Route('/review/create', name: 'review_create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
         $dto = new ReviewDto();
@@ -60,17 +61,21 @@ final class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'review_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+    #[Route('/review/{id}', name: 'review_show', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(int $id): Response
     {
+        /** @var Review|null $review */
         $review = $this->reviewRepository->find($id);
 
         if (!$review) {
             throw $this->createNotFoundException($this->translator->trans('flash.review.not_found'));
         }
 
+        $otherReviews = $this->reviewRepository->findReviewsByCompanyName($review->companyName, $review->id);
+
         return $this->render('review/show.html.twig', [
             'review' => $review,
+            'otherReviews' => $otherReviews,
         ]);
     }
 }

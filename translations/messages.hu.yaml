@@ -16,6 +16,7 @@ page:
         show:
             title: 'Vélemény – %company%'
             heading: 'Vélemény részletei'
+            other_reviews: '%company% további értékelései'
 
 common:
     back_to_list: 'Vissza a listához'

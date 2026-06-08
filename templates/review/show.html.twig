@@ -16,5 +16,18 @@
 
         {{ include('review/_card.html.twig', {show_actions: false}) }}
 
+        {% if otherReviews is not empty %}
+            <div class="mt-5">
+                <h2 class="fs-5 fw-semibold mb-3">
+                    {{ 'page.review.show.other_reviews'|trans({'%company%': review.companyName}) }}
+                </h2>
+                <div class="d-flex flex-column gap-3">
+                    {% for otherReview in otherReviews %}
+                        {{ include('review/_card.html.twig', {review: otherReview, show_actions: true}) }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 {% endblock %}

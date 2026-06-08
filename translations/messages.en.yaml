@@ -16,6 +16,7 @@ page:
         show:
             title: 'Review – %company%'
             heading: 'Review Details'
+            other_reviews: 'Other reviews of %company%'
 
 common:
     back_to_list: 'Back to List'
