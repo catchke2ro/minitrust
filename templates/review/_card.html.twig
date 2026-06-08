@@ -16,7 +16,11 @@
 
         {% if review.reviewText %}
             <p class="mb-3 text-body">
-                {{ review.reviewText }}
+                {% if truncate is not defined or truncate %}
+                    {{ review.reviewText|u.truncate(200, '…') }}
+                {% else %}
+                    {{ review.reviewText }}
+                {% endif %}
             </p>
         {% endif %}
 

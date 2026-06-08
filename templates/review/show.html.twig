@@ -14,7 +14,7 @@
 
         {% include 'widget/flash_messages.html.twig' %}
 
-        {{ include('review/_card.html.twig', {show_actions: false}) }}
+        {{ include('review/_card.html.twig', {show_actions: false, truncate: false}) }}
 
         {% if otherReviews is not empty %}
             <div class="mt-5">
