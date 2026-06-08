@@ -1,0 +1,34 @@
+flash:
+    review:
+        saved: 'A vélemény sikeresen elmentve.'
+        save_error: 'Hiba történt a vélemény mentésekor: %error%'
+        not_found: 'A vélemény nem található.'
+
+page:
+    review:
+        create:
+            title: 'Véleményezés'
+            submit: 'Küldés'
+        list:
+            title: 'Vélemények'
+            heading: 'Vélemények'
+            total: 'Összesen %count% vélemény'
+        show:
+            title: 'Vélemény – %company%'
+            heading: 'Vélemény részletei'
+
+common:
+    back_to_list: 'Vissza a listához'
+    show: 'Megtekintés'
+    create_new_review: 'Vélemény írása'
+
+form:
+    review:
+        company_name:
+            label: 'Cégnév'
+        rating:
+            label: 'Értékelés'
+        review_text:
+            label: 'Vélemény'
+        author_email:
+            label: 'E-mail cimed'

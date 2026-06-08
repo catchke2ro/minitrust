@@ -1,0 +1,5 @@
+validation:
+    review:
+        rating:
+            not_blank: 'Please select a rating.'
+

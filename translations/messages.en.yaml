@@ -1,0 +1,34 @@
+flash:
+    review:
+        saved: 'Review saved successfully.'
+        save_error: 'An error occurred while saving the review: %error%'
+        not_found: 'Review not found.'
+
+page:
+    review:
+        create:
+            title: 'Write a Review'
+            submit: 'Submit'
+        list:
+            title: 'Reviews'
+            heading: 'Reviews'
+            total: 'Total: %count% reviews'
+        show:
+            title: 'Review – %company%'
+            heading: 'Review Details'
+
+common:
+    back_to_list: 'Back to List'
+    show: 'View'
+    create_new_review: 'Write a Review'
+
+form:
+    review:
+        company_name:
+            label: 'Company Name'
+        rating:
+            label: 'Rating'
+        review_text:
+            label: 'Review'
+        author_email:
+            label: 'Email address'

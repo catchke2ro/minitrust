@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page.review.show.title'|trans({'%company%': review.companyName}) }}{% endblock %}
+
+{% block body %}
+    <div class="container py-5" style="max-width: 720px;">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fs-3 fw-bold mb-0">{{ 'page.review.show.heading'|trans }}</h1>
+            <a href="{{ path('review_list') }}" class="btn btn-outline-secondary btn-sm">
+                ← {{ 'common.back_to_list'|trans }}
+            </a>
+        </div>
+
+        {% include 'widget/flash_messages.html.twig' %}
+
+        {{ include('review/_card.html.twig', {show_actions: false}) }}
+
+    </div>
+{% endblock %}
