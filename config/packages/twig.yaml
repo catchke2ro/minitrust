@@ -1,0 +1,4 @@
+twig:
+    form_themes:
+        - 'form/form_theme.html.twig'
+
