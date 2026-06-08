@@ -1,6 +1,6 @@
 flash:
     review:
-        saved: 'A vélemény sikeresen elmentve.'
+        saved: 'Köszönjük a véleményed!'
         save_error: 'Hiba történt a vélemény mentésekor: %error%'
         not_found: 'A vélemény nem található.'
 
