@@ -2,4 +2,7 @@ validation:
     review:
         rating:
             not_blank: 'Kérjük, válasszon értékelést.'
-
+        review_text:
+            contains_offensive: 'A vélemény sértő tartalmat tartalmaz, kérjük fogalmazd át.'
+            contains_explicit: 'A vélemény explicit tartalmat tartalmaz, kérjük fogalmazd át.'
+            moderation_unavailable: 'A tartalomellenőrzés most nem érhető el, kérjük próbáld újra később.'

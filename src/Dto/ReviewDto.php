@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Dto;
 
 use App\Enum\Rating;
+use App\Validator\Constraint\ReviewTextSafety;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class ReviewDto
@@ -17,6 +18,7 @@ final class ReviewDto
     public ?Rating $rating = null;
 
     #[Assert\Length(max: 65535)]
+    #[ReviewTextSafety]
     public ?string $reviewText = null;
 
     #[Assert\Email]

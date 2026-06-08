@@ -2,4 +2,7 @@ validation:
     review:
         rating:
             not_blank: 'Please select a rating.'
-
+        review_text:
+            contains_offensive: 'The review contains offensive content. Please rewrite it.'
+            contains_explicit: 'The review contains explicit content. Please rewrite it.'
+            moderation_unavailable: 'Content moderation is temporarily unavailable. Please try again later.'
