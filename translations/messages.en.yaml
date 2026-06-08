@@ -18,6 +18,17 @@ page:
             heading: 'Review Details'
             other_reviews: 'Other reviews of %company%'
 
+    company:
+        list:
+            title: 'Companies'
+            heading: 'Companies'
+            total: 'Total: %count% companies'
+            empty: 'No reviews found yet.'
+            column:
+                company: 'Company'
+                review_count: 'Reviews'
+                average_rating: 'Avg. Rating'
+
 common:
     back_to_list: 'Back to List'
     show: 'View'

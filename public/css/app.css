@@ -32,6 +32,7 @@
 .star-rating-result {
     color: gray;
 }
+
 .star-rating-result.active {
     color: orange;
 }

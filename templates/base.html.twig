@@ -10,6 +10,26 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
+
+<nav class="navbar navbar-expand">
+    <div class="container justify-content-start">
+        <a class="navbar-brand d-flex align-items-center  gap-2" href="{{ path('review_list') }}">
+            <img src="/minitrust.png" alt="MiniTrust logo" height="32">
+            <span class="fw-bold">MiniTrust</span>
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get('_route') == 'review_list' %} active{% endif %}"
+                   href="{{ path('review_list') }}">Értékelések</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get('_route') == 'company_list' %} active{% endif %}"
+                   href="{{ path('company_list') }}">Cégek</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 {% block body %}{% endblock %}
 
 {% block javascripts %}{% endblock %}

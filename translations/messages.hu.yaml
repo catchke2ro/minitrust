@@ -18,6 +18,17 @@ page:
             heading: 'Vélemény részletei'
             other_reviews: '%company% további értékelései'
 
+    company:
+        list:
+            title: 'Cégek'
+            heading: 'Cégek'
+            total: 'Összesen %count% cég'
+            empty: 'Még nincsenek vélemények.'
+            column:
+                company: 'Cégnév'
+                review_count: 'Vélemények'
+                average_rating: 'Átl. értékelés'
+
 common:
     back_to_list: 'Vissza a listához'
     show: 'Megtekintés'

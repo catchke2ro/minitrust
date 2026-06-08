@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Dto\CompanyStatsDto;
 use App\Entity\Review;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,5 +38,28 @@ class ReviewRepository extends ServiceEntityRepository implements ReviewReposito
         }
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function getCompanyStats(): array
+    {
+        $rows = $this->createQueryBuilder('r')
+            ->select(
+                'COUNT(r.id) AS reviewCount',
+                'AVG(r.rating) AS averageRating',
+                "REGEXP_REPLACE(r.companyName, '[^[:alnum:]]', '') AS companyName"
+            )
+            ->groupBy('companyName')
+            ->orderBy('averageRating', 'DESC')
+            ->getQuery()
+            ->getArrayResult();
+
+        return array_map(
+            static fn (array $row): CompanyStatsDto => new CompanyStatsDto(
+                companyName: $row['companyName'],
+                reviewCount: (int) $row['reviewCount'],
+                averageRating: (float) $row['averageRating'],
+            ),
+            $rows
+        );
     }
 }
