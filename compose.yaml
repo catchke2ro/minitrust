@@ -52,6 +52,7 @@ services:
       - "3366:3306"
     volumes:
       - database_data:/var/lib/mysql:rw
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
 volumes:
   caddy_data:
