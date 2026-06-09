@@ -62,6 +62,19 @@ docker compose exec php php bin/console doctrine:migrations:migrate --no-interac
 - HTTPS (ha kell): `https://localhost`
 - MySQL host gépről: `127.0.0.1:3366`
 
+## Tesztek futtatása
+
+```bash
+docker compose exec php php bin/phpunit
+```
+
+A funkcionális tesztek futtatásához létre kell hozni a test adatbázist:
+
+```bash
+docker compose exec php bin/console --env=test doctrine:database:create
+docker compose exec php bin/console --env=test doctrine:schema:create
+```
+
 ## AI alapú tartalomellenőrzés beállítása
 
 Az értékelés szövegére fut egy AI validáció (sértő/explicit tartalom szűrése).
@@ -70,3 +83,16 @@ Ehhez add meg legalább a Mistral API kulcsot a `.env` fájlban:
 ```bash
 MISTRAL_API_KEY=your_mistral_api_key
 ```
+
+## Munkaidő napló feladatonként
+
+| Feladat                                                                                      | Becsült idő    |
+|----------------------------------------------------------------------------------------------|----------------|
+| Projekt bootstrap (Symfony alap, Függőségek, Doctrine, Carbon, PHP-CS-Fixer, IDE Beállítás)  | ~1 óra 30 perc |
+| Domain alapok (Review entity + migration, repository)                                        | ~45 perc       |
+| Fő funkciók és UI (review CRUD flow, layout, ikonok, értékelés CSS, fordítások, cég oldalak) | ~2 óra         |
+| Tesztek (PHPUnit telepítés, unit + functional tesztek)                                       | ~45 perc       |
+| LLM moderáció + dokumentáció (`README`, `.env.example`)                                      | ~30 perc       |
+| Befejezés, javítások                                                                         | ~30 perc       |
+
+**Összesen: ~6 óra**
